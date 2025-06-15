@@ -1,24 +1,25 @@
-
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    id 'com.android.application' version '8.10.1' apply false
+//    id 'org.jetbrains.kotlin.android' version '2.0.21' apply false
+//    id 'org.jetbrains.kotlin.kapt' version '1.9.20' apply false
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.kapt'
+apply plugin: 'com.yanzhenjie.andserver' // plugin externo mantido
 
 android {
     compileSdk 34
 
     defaultConfig {
-        applicationId 'github.umer0586.sensorserver'
+        applicationId "github.umer0586.sensorserver"
         minSdk 21
         targetSdk 34
         multiDexEnabled true
         versionCode 34
         versionName "6.4.0"
-
-
     }
-
 
     buildTypes {
         release {
@@ -26,6 +27,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -35,17 +37,14 @@ android {
         jvmTarget = "17"
     }
 
-    namespace 'github.umer0586.sensorserver'
+    namespace "github.umer0586.sensorserver"
 
     buildFeatures {
         viewBinding true
     }
 }
 
-apply plugin: 'com.yanzhenjie.andserver'
-
 dependencies {
-
     def acraVersion = '5.9.7'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -56,22 +55,18 @@ dependencies {
 
     implementation "ch.acra:acra-mail:$acraVersion"
 
-
-    //JSON parser
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0'
 
     implementation 'org.java-websocket:Java-WebSocket:1.5.3'
 
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
-
     implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
     implementation 'androidx.core:core-ktx:1.10.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.22"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+
     implementation 'com.yanzhenjie.andserver:api:2.1.12'
     kapt 'com.yanzhenjie.andserver:processor:2.1.12'
     implementation 'com.guolindev.permissionx:permissionx:1.8.0'
-
-
 }
-
